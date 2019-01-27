@@ -1,0 +1,19 @@
+{
+  "name": "project-r",
+  "version": "1.0.0",
+  "main": "proj.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "hbs": "^4.0.1",
+    "mongoose": "^5.4.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}
