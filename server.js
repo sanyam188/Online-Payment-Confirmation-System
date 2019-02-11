@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // mongoose.connect('mongodb://localhost:27017/reg');
 mongoose.connect('mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
-
+const port = process.env.PORT || 3000;
 // const {mongoose} = require('/db/mongoose.js');
 //
 var reg=mongoose.model('reg', {
@@ -56,4 +56,4 @@ app.post('/t',(req,res)=>{
   console.log(req.body.Acadmic);
 });
 
-app.listen(3000);
+app.listen(port);
