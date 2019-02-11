@@ -5,6 +5,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // mongoose.connect('mongodb://localhost:27017/reg');
 mongoose.connect('mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
+// MongoClient.connect(uri, function(err, db) {
+//   // Paste the following examples here
+
+//   db.close();
+// });
 const port = process.env.PORT || 3000;
 // const {mongoose} = require('/db/mongoose.js');
 //
@@ -15,7 +20,7 @@ var reg=mongoose.model('reg', {
   lib:{
     type:Number
   },
-  acd:{
+  acad:{
     type:String
   },
   acdv:{
@@ -44,7 +49,8 @@ app.get('/', function (req, res) {
 app.post('/t',(req,res)=>{
   console.log('success, post req created');
   var regn = new reg({
-    hostel: req.body.Hostel
+    hostel: req.body.Hostel,
+    acad:req.body.Acadmic
   });
   regn.save().then((doc) => {
     res.send(doc);
@@ -56,4 +62,6 @@ app.post('/t',(req,res)=>{
   console.log(req.body.Acadmic);
 });
 
-app.listen(port);
+app.listen(port,()=>{
+  console.log("connected '${port}'");
+});
