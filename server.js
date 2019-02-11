@@ -3,7 +3,8 @@ const hbs = require('hbs');
 var app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-mongoose.connect('mongodb://localhost:27017/reg');
+// mongoose.connect('mongodb://localhost:27017/reg');
+mongoose.connect('mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
 
 // const {mongoose} = require('/db/mongoose.js');
 //
