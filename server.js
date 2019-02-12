@@ -4,7 +4,7 @@ var app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // mongoose.connect('mongodb://localhost:27017/reg');
-mongoose.connect('mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
+mongoose.connect('mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/reg?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true');
 // MongoClient.connect(uri, function(err, db) {
 //   // Paste the following examples here
 
@@ -17,13 +17,19 @@ var reg=mongoose.model('reg', {
   hostel:{
     type:String
   },
+  rollno:{
+    type:String
+  },
+  name:{
+    type:String
+  },
   lib:{
     type:Number
   },
   acad:{
     type:String
   },
-  acdv:{
+  acadv:{
     type:Boolean
   },
   hostelv:{
@@ -50,7 +56,11 @@ app.post('/t',(req,res)=>{
   console.log('success, post req created');
   var regn = new reg({
     hostel: req.body.Hostel,
-    acad:req.body.Acadmic
+    acad:req.body.Acadmic,
+    rollno: req.body.Rollno,
+    name:req.body.Name,
+    acadv:false,
+    hostelv:false
   });
   regn.save().then((doc) => {
     res.send(doc);
@@ -59,7 +69,7 @@ app.post('/t',(req,res)=>{
   });
   console.log(req.body);
   console.log(req.body.Hostel);
-  console.log(req.body.Acadmic);
+  console.log(req.body.Name);
 });
 
 app.listen(port,()=>{
