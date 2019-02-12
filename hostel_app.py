@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from updatedb import UpdateDocuments
 
 class SampleApp(Tk):
     def __init__(self):
@@ -114,8 +115,9 @@ class Update(Frame):
     def __init__(self,parent,controller):
         Frame.__init__(self,parent)
 
-        lbl = ttk.Label(self,text = "View PAge")
-        lbl.grid()
+        updt = UpdateDocuments()
+        # lbl = ttk.Label(self,text = "View PAge")
+        # lbl.grid()
 
 
 if __name__ == "__main__":
