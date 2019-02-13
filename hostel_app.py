@@ -116,8 +116,8 @@ class Update(Frame):
         Frame.__init__(self,parent)
 
         updt = UpdateDocuments()
-        # lbl = ttk.Label(self,text = "View PAge")
-        # lbl.grid()
+         lbl = ttk.Label(self,text = "Elements in the Database are Up to date with the excel file.")
+         lbl.grid()
 
 
 if __name__ == "__main__":
