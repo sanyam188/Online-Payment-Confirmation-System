@@ -93,12 +93,9 @@ class View(Frame):
         submitbtn = Button(self,command=callback,text="Submit").grid(row=8,column=1)
         print(opp,choice)
 
-
-
-
-        self.rowconfigure(0 ,weight=1)
+        self.rowconfigure( 0,weight=1)
         self.rowconfigure( 1,weight=1)
-        self.rowconfigure(2 ,weight=1)
+        self.rowconfigure( 2,weight=1)
         self.rowconfigure( 3,weight=1)
         self.rowconfigure( 4,weight=1)
         self.rowconfigure( 5,weight=1)
