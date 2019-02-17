@@ -2,6 +2,9 @@ from tkinter import *
 from tkinter import ttk
 from updatedb import Update
 from option_view import View
+from option_write import Write
+from tkinter import filedialog
+
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
@@ -13,8 +16,8 @@ class SampleApp(Tk):
          
         update = ttk.Button(optionFrame,text="Update",command=lambda:self.update(otherFrame))
         view = ttk.Button(optionFrame,text="View",command=lambda:self.view(otherFrame))
-        search =ttk.Button(optionFrame,text="Search File")
-        upload =ttk.Button(optionFrame,text="Upload File")
+        search =ttk.Button(optionFrame,text="Search File",command=lambda:self.search())
+        upload =ttk.Button(optionFrame,text="Write to File",command=lambda:self.write(otherFrame))
         optionFrame.grid(row=0,column=0,sticky="nsew",padx=5,pady=5)
         otherFrame.grid(row=0,column=1,sticky="nsew",padx=5,pady=5)
         update.grid(column=0,row=1,sticky="nsew")
@@ -66,7 +69,7 @@ class SampleApp(Tk):
         #     self.frame[page]=frames
         #     frames.grid(row=0,column=0,sticky="nsew")
         # self.show("View")
-
+    
     def view(self,otherFrame):
         dd = View(parent=otherFrame, controller=self)
         dd.grid(row=0,column=0,sticky="nsew")
@@ -76,6 +79,16 @@ class SampleApp(Tk):
         dd = Update(parent=otherFrame, controller=self)
         dd.grid(row=0,column=0,sticky="nsew")
         dd.tkraise()
+
+    def search(self):
+        address = filedialog.askopenfilename()
+        print (address)
+
+    def write(self,otherFrame):
+        dd = Write(parent=otherFrame,controller=self)
+        dd.grid(row=0,column=0,sticky="nsew")
+        dd.tkraise()
+
 
     # def show(self,page):
     # self.frame[page].tkraise()
