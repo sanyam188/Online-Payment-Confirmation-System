@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from updatedb import UpdateDocuments
+from updatedb import Update
 from option_view import View
 class SampleApp(Tk):
     def __init__(self):
@@ -81,12 +81,11 @@ class SampleApp(Tk):
     # self.frame[page].tkraise()
 
 
-class Update(Frame):
-    def __init__(self,parent,controller):
-        Frame.__init__(self,parent)
-        updt = UpdateDocuments()
-        lbl = ttk.Label(self,text = "Elements in the Database are Up to date with the excel file.")
-        lbl.grid()
+# class Update(Frame):
+#     def __init__(self,parent,controller):
+#         Frame.__init__(self,parent)
+#         updt = UpdateDocuments()
+        
 
 
 if __name__ == "__main__":

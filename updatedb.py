@@ -1,8 +1,10 @@
 import xlrd
 from pymongo import MongoClient
+from tkinter import *
 
-class UpdateDocuments:
-    def __init__(self): 
+class Update(Frame):
+    def __init__(self,parent,controller):
+        Frame.__init__(self,parent)
         loc = ("../bank.xls")
         wb = xlrd.open_workbook(loc)
         sheet = wb.sheet_by_index(0)
@@ -18,3 +20,6 @@ class UpdateDocuments:
                     if(int(ob['rollno']) in (sheet.cell_value(i,2)).str()):
                         coll.update_one({'hostel':du},{ "$set" : {'hostelv':'true'}})
                         break
+
+        lbl = ttk.Label(self,text = "Elements in the Database are Up to date with the excel file.")
+        lbl.grid()
