@@ -94,20 +94,17 @@ class View(Frame):
 
         # res = coll.find({'hostel':{"$exists":True}})
         co=res.count()
-        print(res)
+        print(res.count())
         displayFrame=Frame(self)
         displayFrame.grid(row=9,column=0,sticky="nsew",columnspan=2)
         displayFrame.rowconfigure( 0,weight=1)
         displayFrame.columnconfigure(0,weight=1)
         
-
         listb = Listbox(displayFrame)
         listb.grid(row=0,column=0,sticky="nsew")
         sb = Scrollbar(displayFrame,orient=VERTICAL,command=listb.yview)
         sb.grid(row=0,column=1,sticky="nsew")
         listb['yscrollcommand'] = sb.set
-
         
-        for i in range(0,co):
-            
+        for i in range(0,co):            
             listb.insert('end',res[i])

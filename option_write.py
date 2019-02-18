@@ -4,6 +4,7 @@ from tkinter import *
 import xlwt
 from xlwt import Workbook
 from tkinter import filedialog
+from dbconnect import db_connect
 class Write(Frame):
     def __init__(self,parent,controller):
         Frame.__init__(self,parent)
@@ -13,16 +14,21 @@ class Write(Frame):
 
         sheet1 = wb.add_sheet('Sheet 1') 
         
-        sheet1.write(1, 0, 'ISBT DEHRADUN') 
-        sheet1.write(2, 0, 'SHASTRADHARA') 
-        sheet1.write(3, 0, 'CLEMEN TOWN') 
-        sheet1.write(4, 0, 'RAJPUR ROAD') 
-        sheet1.write(5, 0, 'CLOCK TOWER') 
-        sheet1.write(0, 1, 'ISBT DEHRADUN') 
-        sheet1.write(0, 2, 'SHASTRADHARA') 
-        sheet1.write(0, 3, 'CLEMEN TOWN') 
-        sheet1.write(0, 4, 'RAJPUR ROAD') 
-        sheet1.write(0, 5, 'CLOCK TOWER') 
+        sheet1.write(1, 0, 'Name') 
+        sheet1.write(1, 1, 'Roll Number') 
+        sheet1.write(1, 2, 'DU Reference Number') 
+        sheet1.write(1, 3, 'Verified') 
+        client = MongoClient("mongodb://Sanyam:abcd123@cluster0-shard-00-00-tctra.mongodb.net:27017,cluster0-shard-00-01-tctra.mongodb.net:27017,cluster0-shard-00-02-tctra.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true")
+        coll = client.reg.regs
+        res = coll.find({'hostel':{"$exists":True},'name':{"$exists":True},'rollno':{"$exists":True},'hostelv':{"$exists":True}})
+        co=res.count()
+        for i in range(0,co):
+            sheet1.write((i+2),0,res[i]['name'])
+            sheet1.write((i+2),1,res[i]['rollno'])
+            sheet1.write((i+2),2,res[i]['hostel'])
+            sheet1.write((i+2),3,res[i]['hostelv'])
+
+        print(coll.find({}).count())
         
         filename = filedialog.asksaveasfilename()
         wb.save(filename) 
