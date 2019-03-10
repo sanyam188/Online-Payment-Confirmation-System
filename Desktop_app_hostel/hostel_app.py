@@ -4,20 +4,31 @@ from updatedb import Update
 from option_view import View
 from option_write import Write
 from tkinter import filedialog
-
+from tkinter import font
 class SampleApp(Tk):
     def __init__(self):
         Tk.__init__(self)
         self.geometry("1000x500")
-        container=ttk.Frame(self)
+        container=Frame(self,bg="#9b9a88")
+
         container.grid(row=0,column=0,sticky="nsew",padx=5, pady=5)
+ 
         optionFrame=ttk.Frame(container,relief=RAISED,borderwidth = 1)
         otherFrame=ttk.Frame(container,relief=SUNKEN)   
-         
-        update = ttk.Button(optionFrame,text="Update",command=lambda:self.update(otherFrame))
-        view = ttk.Button(optionFrame,text="View",command=lambda:self.view(otherFrame))
-        search =ttk.Button(optionFrame,text="Search File",command=lambda:self.search())
         upload =ttk.Button(optionFrame,text="Write to File",command=lambda:self.write(otherFrame))
+      
+        upload.grid(row=0, column=1, padx=10, pady=10)
+      
+        update = Button(optionFrame,text="Update",command=lambda:self.update(otherFrame),)
+      
+        update.grid(row=0, column=1, padx=10, pady=10)
+      
+        view = ttk.Button(optionFrame,text="View",command=lambda:self.view(otherFrame))
+        view.grid(row=0, column=1, padx=10, pady=10)
+        search =ttk.Button(optionFrame,text="Search File",command=lambda:self.search())
+        
+        search.grid(row=0, column=1, padx=10, pady=10)
+        # search.grid()
         optionFrame.grid(row=0,column=0,sticky="nsew",padx=5,pady=5)
         otherFrame.grid(row=0,column=1,sticky="nsew",padx=5,pady=5)
         update.grid(column=0,row=1,sticky="nsew")
@@ -25,6 +36,10 @@ class SampleApp(Tk):
         search.grid(column=0,row=3,sticky="nsew")
         upload.grid(column=0,row=0,sticky="nsew")
        
+        appHighlightFont = font.Font(family='Helvetica', size=12, weight='bold')
+        font.families()
+
+
         self.rowconfigure(0,weight=1)
         self.columnconfigure(0,weight=1)
         container.rowconfigure(0,weight=1)
